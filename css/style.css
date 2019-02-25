@@ -1,0 +1,51 @@
+body{
+            margin:0 auto;
+            font-family: "Roboto", sans-serif;
+        }
+        .login-page {
+            width: 400px;
+            margin: 0 auto;
+            padding: 20em 0 0 0;
+        }
+        
+        .form-input {
+            margin: auto;
+        }
+        
+        .login-form {
+            margin: auto;
+        }
+        .login-form input{
+            margin: 0 0 20px;
+            background-color:#f4f4f4;
+            color: #646468;
+        }
+        .login-form input:focus, .login-form button:focus{
+            outline:none;
+        }
+        .login-form input:hover, .login-form input:active{
+            background-color: #eae7e7;
+        }
+        .login-form button{
+            margin:10px 0 0 0;
+            cursor: pointer;
+            background-color:#468bc5a6;
+        }
+        .login-form button:hover, .login-form button:active, .login-form button:focus{
+            background-color:#185bc9a6;
+        }
+        .login-form input, .login-form button{
+            padding: 32px;
+            color: #646468;
+            width: 100%;
+            border: none;
+            border-radius: 20px;
+            font-size: 1.5em;
+        }
+        p.forgetpwd a{
+            text-decoration:none;
+            color: #1939ec;
+        }
+        p.forgetpwd a:hover{
+            text-decoration:underline;
+        }

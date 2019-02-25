@@ -1,0 +1,95 @@
+*{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+body{
+    margin: 0;
+    background: #c2e7f2;
+    
+}
+.login-page{
+  width:100%;
+  margin: 0;
+}
+.container{
+  display: flex;
+  width: 50%;
+  height: 100vh;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.formInput{
+  width: 50%;
+  background: #fff;
+    border-radius: 10px;
+}
+.logIn{
+  padding:1em 0;
+}
+.title{
+    display: block;
+    margin-top: 0.5em;
+    line-height: 3em;
+    font-size: 1.6em;
+    letter-spacing: 1px;
+    text-align: center;
+    color: #555555;
+    
+}
+.formbar{
+  text-align:center;
+    width:100%;
+}
+#user{
+    margin-bottom: -1px;
+}
+#user, #password{
+    padding: 4%;
+    
+}
+input:focus{
+    outline: none;
+}
+#btnInput{
+    padding: 3.5%;
+    background-color: #4272d7;
+    border: none;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 1em;
+    transition:ease 1s;
+}
+#btnInput:hover, #btnInput:focus{
+    background-color: #34373d;
+    outline: none;
+}
+#user, #password, #btnInput{
+    box-sizing: border-box;
+    width: 75%;
+    
+}
+.button{
+    text-align:center;
+    margin-top: 1em;
+    
+}
+
+.footer{
+  width: 100%;
+  text-align: center;
+    font-size: 1em;
+    margin: 4em 0;
+    line-height: 1.4em;
+  
+}
+.footer a{
+    text-decoration: none;
+    color: #4272d7;
+}
+.footer a:hover{
+    text-decoration: underline;
+}
+.footer-title{
+    color: #999999;
+}
