@@ -1,6 +1,6 @@
-function getFromStorage() {
-    return localStorage.getItem('user');
-}
+// function getFromStorage() {
+//     return localStorage.getItem('user');
+// }
 
 
 function login() {
@@ -10,21 +10,28 @@ function login() {
     username = username.trim();
     password = password.trim();
 
-    let user = JSON.parse(getFromStorage());
+    let users = JSON.parse(localStorage.getItem('users'));
     if (username === "" || password === "") {
         alert('Fill up fields');
         location.reload();
         return false;
-    } else if (getFromStorage() === null || getFromStorage() === undefined) {
+    } else if ( users === null || users === undefined) {
         alert("Please Register to login");
         location.href = "login-page.html";
         return false;
-    }else if (username === user.username && password === user.password) {
-        alert('Welcome');
-        location.href = "order-page.html";
-    } else {
-        alert('Invalid login details');
-        location.reload();
-        return false;
+    }else {
+        for (let i = 0; i < users.length; i++) {
+            if (username === users[i].username && password === users[i].password) {
+                alert('Welcome');
+                location.href = "order-page.html";
+                return false
+            }else {
+                alert('Invalid login details');
+                location.reload();
+                return false;
+            }
+            
+        }
+        
     }
 }
