@@ -54,6 +54,6 @@ function validateInput() {
        alert('Registration Successful');
        localStorage.setItem('users', JSON.stringify(users));
        location.href = "index.html";
-       return false;
+       return;
     }
 }
