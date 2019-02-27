@@ -1,14 +1,14 @@
 
 
 function validate(){
-  let fullname          = document.getElementById('fullname').value;
-  let parcelWeight      = document.getElementById('parcelWeight').value;
-  let dateSent          = document.getElementById('dateSent').value;
-  let addressOfSender   = document.getElementById('senderAddress').value +" "+ document.getElementById('senderState').value;
-  let addressOfReceiver = document.getElementById('receiverAddress').value +" "+ document.getElementById('receiverState').value;
-  let senderAddress     = addressOfSender;
-  let receiverAddress   = addressOfReceiver;
-  let input = fullname && parcelWeight && dateSent && senderAddress && receiverAddress;
+  const fullname          = document.getElementById('fullname').value;
+  const parcelWeight      = document.getElementById('parcelWeight').value;
+  const dateSent          = document.getElementById('dateSent').value;
+  const addressOfSender   = document.getElementById('senderAddress').value +" "+ document.getElementById('senderState').value;
+  const addressOfReceiver = document.getElementById('receiverAddress').value +" "+ document.getElementById('receiverState').value;
+  const senderAddress     = addressOfSender;
+  const receiverAddress   = addressOfReceiver;
+  const input             = fullname && parcelWeight && dateSent && senderAddress && receiverAddress;
 
 
   //validate data as it is being inputed
@@ -28,35 +28,26 @@ function validate(){
     return;
   }
   
- 
-
-  
-  //alert(senderAddress);
-  //alert(receiverAddress);
-  
 }
 
-  
-  
-  
 
  function save(){
-   let fullname         = document.getElementById('fullname').value;
-  let parcelWeight      = document.getElementById('parcelWeight').value;
-  let dateSent          = document.getElementById('dateSent').value;
-  let addressOfSender   = document.getElementById('senderAddress').value +" "+ document.getElementById('senderState').value;
-  let addressOfReceiver = document.getElementById('receiverAddress').value +" "+ document.getElementById('receiverState').value;
-  let senderAddress     = addressOfSender;
-  let receiverAddress   = addressOfReceiver;
-  let input = fullname && parcelWeight && dateSent && senderAddress && receiverAddress;
-    
+  const fullname          = document.getElementById('fullname').value;
+  const parcelWeight      = document.getElementById('parcelWeight').value;
+  const dateSent          = document.getElementById('dateSent').value;
+  const addressOfSender   = document.getElementById('senderAddress').value +" "+ document.getElementById('senderState').value;
+  const addressOfReceiver = document.getElementById('receiverAddress').value +" "+ document.getElementById('receiverState').value;
+  const senderAddress     = addressOfSender;
+  const receiverAddress   = addressOfReceiver;
+  const input             = fullname && parcelWeight && dateSent && senderAddress && receiverAddress;
+  
    
    const parcel = {
-    PlacedBy: fullname,
-    Weight: parcelWeight,
-    sentOn: dateSent,
-    From_address: senderAddress,
-    To_address: receiverAddress,
+    PlacedBy      : fullname,
+    Weight        : parcelWeight,
+    sentOn        : dateSent,
+    From_address  : senderAddress,
+    To_address    : receiverAddress,
   }
   
   let parcels = JSON.parse(localStorage.getItem("parcels"));
@@ -64,9 +55,12 @@ function validate(){
     let parcelArr = [parcel];
     localStorage.setItem('parcels', JSON.stringify(parcelArr));
   }// work on the push
-   //else{
-    //parcels.push(parcel);
-    //localStorage.setItem('parcels', JSON.stringify());
-  //}
+   else{
+     //for(let i = 0; i< parcels.length; i++){
+       
+     //}
+    parcels.push(parcel);
+    localStorage.setItem('parcels', JSON.stringify(parcels));
+  }
   
  }
