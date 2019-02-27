@@ -1,14 +1,23 @@
-
-
 function validate(){
-  const fullname          = document.getElementById('fullname').value;
-  const parcelWeight      = document.getElementById('parcelWeight').value;
-  const dateSent          = document.getElementById('dateSent').value;
-  const addressOfSender   = document.getElementById('senderAddress').value +" "+ document.getElementById('senderState').value;
-  const addressOfReceiver = document.getElementById('receiverAddress').value +" "+ document.getElementById('receiverState').value;
-  const senderAddress     = addressOfSender;
-  const receiverAddress   = addressOfReceiver;
-  const input             = fullname && parcelWeight && dateSent && senderAddress && receiverAddress;
+  let fullname          = document.getElementById('fullname').value;
+  fullname              = fullname.trim();
+  
+  let parcelWeight      = document.getElementById('parcelWeight').value;
+  parcelWeight          = parcelWeight.trim();
+  
+  let dateSent          = document.getElementById('dateSent').value;
+  dateSent              = dateSent.trim();
+  
+  let addressOfSender   = document.getElementById('senderAddress').value +" "+ document.getElementById('senderState').value;
+  let addressOfReceiver = document.getElementById('receiverAddress').value +" "+ document.getElementById('receiverState').value;
+  
+  let senderAddress     = addressOfSender;
+  senderAddress         = senderAddress.trim();
+  
+  let receiverAddress   = addressOfReceiver;
+  receiverAddress       = receiverAddress.trim();
+  
+  let input             = fullname && parcelWeight && dateSent && senderAddress && receiverAddress;
 
 
   //validate data as it is being inputed
@@ -20,47 +29,54 @@ function validate(){
     alert("Insert type a number");
     return false;
   }else{
-    const name               = document.getElementById('name').innerHTML = fullname;
-    const weight             = document.getElementById('weight').innerHTML = parcelWeight;
-    const date               = document.getElementById('date').innerHTML = dateSent;
-    const sender_Address     = document.getElementById('senderOfAddress').innerHTML = senderAddress;
-    const recipient_Address  = document.getElementById('recipientAddress').innerHTML = receiverAddress;
+    document.getElementById('name').innerHTML               = fullname;
+    document.getElementById('weight').innerHTML             = parcelWeight;
+    document.getElementById('date').innerHTML               = dateSent;
+    document.getElementById('senderOfAddress').innerHTML    = senderAddress;
+    document.getElementById('recipientAddress').innerHTML   = receiverAddress;
     return;
   }
-  
 }
-
-
- function save(){
-  const fullname          = document.getElementById('fullname').value;
-  const parcelWeight      = document.getElementById('parcelWeight').value;
-  const dateSent          = document.getElementById('dateSent').value;
-  const addressOfSender   = document.getElementById('senderAddress').value +" "+ document.getElementById('senderState').value;
-  const addressOfReceiver = document.getElementById('receiverAddress').value +" "+ document.getElementById('receiverState').value;
-  const senderAddress     = addressOfSender;
-  const receiverAddress   = addressOfReceiver;
-  const input             = fullname && parcelWeight && dateSent && senderAddress && receiverAddress;
   
+
+function save(){
+
+  let fullname          = document.getElementById('fullname').value;
+  fullname              = fullname.trim();
+  
+  let parcelWeight      = document.getElementById('parcelWeight').value;
+  parcelWeight          = parcelWeight.trim();
+  
+  let dateSent          = document.getElementById('dateSent').value;
+  dateSent              = dateSent.trim();
+  
+  let addressOfSender   = document.getElementById('senderAddress').value +" "+ document.getElementById('senderState').value;
+  let addressOfReceiver = document.getElementById('receiverAddress').value +" "+ document.getElementById('receiverState').value;
+  
+  let senderAddress     = addressOfSender;
+  senderAddress         = senderAddress.trim();
+  
+  let receiverAddress   = addressOfReceiver;
+  receiverAddress       = receiverAddress.trim();
+    
    
-   const parcel = {
-    PlacedBy      : fullname,
-    Weight        : parcelWeight,
-    sentOn        : dateSent,
-    From_address  : senderAddress,
-    To_address    : receiverAddress,
+  const parcel = {
+    PlacedBy: fullname,
+    Weight: parcelWeight,
+    sentOn: dateSent,
+    From_address: senderAddress,
+    To_address: receiverAddress,
   }
   
   let parcels = JSON.parse(localStorage.getItem("parcels"));
    if(parcels === undefined || parcels === null){
     let parcelArr = [parcel];
+    alert('Your Order is Set');
     localStorage.setItem('parcels', JSON.stringify(parcelArr));
-  }// work on the push
-   else{
-     //for(let i = 0; i< parcels.length; i++){
-       
-     //}
+  } else{
     parcels.push(parcel);
+    alert('Your Order is Set');
     localStorage.setItem('parcels', JSON.stringify(parcels));
   }
   
- }
+}
