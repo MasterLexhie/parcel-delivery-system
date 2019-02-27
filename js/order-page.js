@@ -39,9 +39,6 @@ function validate(){
     return;
   }
 }
-
-  
-  
   
 
 function save(){
