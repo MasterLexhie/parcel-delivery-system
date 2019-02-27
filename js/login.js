@@ -1,9 +1,9 @@
 function login() {
     
-    let username = document.getElementById("user").value;
-    let password = document.getElementById("password").value;
-    username = username.trim();
-    password = password.trim();
+    let username    = document.getElementById("user").value;
+    let password    = document.getElementById("password").value;
+    username        = username.trim();
+    password        = password.trim();
 
     let users = JSON.parse(localStorage.getItem('users'));
     if (username === "" || password === "") {
@@ -19,7 +19,7 @@ function login() {
             if (username === users[i].username && password === users[i].password) {
                 alert('Welcome');
                 location.href = "order-page.html";
-                return false
+                return false;
             }else {
                 alert('Invalid login details');
                 location.reload();
