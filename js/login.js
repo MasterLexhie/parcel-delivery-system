@@ -1,8 +1,3 @@
-// function getFromStorage() {
-//     return localStorage.getItem('user');
-// }
-
-
 function login() {
     
     let username = document.getElementById("user").value;
