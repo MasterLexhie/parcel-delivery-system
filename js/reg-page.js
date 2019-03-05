@@ -1,59 +1,74 @@
-function validateInput() {
+validateInput = ( () => {
 
-    let fullname            = document.getElementById("fullname").value;
-    let email               = document.getElementById("email").value;
-    let phoneNumber         = document.getElementById("phoneNumber").value;
-    let username            = document.getElementById("username").value;
-    let password            = document.getElementById("password").value;
-    let confirmPassword     = document.getElementById("confirmPassword").value;
-    let input               = fullname && email && phoneNumber && username && password && confirmPassword;
+    const fullname            = document.getElementById("fullname").value;
+    const email               = document.getElementById("email").value;
+    const phoneNumber         = document.getElementById("phoneNumber").value;
+    const username            = document.getElementById("username").value;
+    const password            = document.getElementById("password").value;
+    const confirmPassword     = document.getElementById("confirmPassword").value;
+    const input               = fullname && email && phoneNumber && username && password && confirmPassword;
 
+    //VALIDATING INPUT BEFORE STORING
+    
     if (input === "") {
-        alert("Please fill up details");
+        alert(`Please fill up details`);
         location.reload();
         return false;
     } else if (!(/^\w+([\.\-]?\w+)*@\w+([\.\-]?\w+)*(\.\w{2,3})+$/.test(email))){
-	    alert("You have entered an invalid email address!");
+	    alert(`You have entered an invalid email address!`);
         return false;
     }else if(!Number(phoneNumber)){
-        alert("Please input Phone Number");
+        alert(`Please input Phone Number`);
         return false;
     }else if(confirmPassword !== password){
-        alert("Wrong Password Input");
-        return false
-    }else {
-        alert("Registration successful");
-        location.href = "index.html";
-         
+        alert(`Wrong Password Input`);
+        return false;
     }
 
     const user = {
-        fullname    : fullname,
-        email       : email,
-        phoneNumber : phoneNumber,
-        username    : username,
-        password    : password
+        fullname,
+        email,
+        phoneNumber,
+        username,
+        password
     };
 
+
     let users = JSON.parse(localStorage.getItem('users'));
+    
 
     if (users === undefined || users === null) {
-        let userArr = [user];
-        localStorage.setItem('users', JSON.stringify(userArr));
-    } else {
-        for (let i = 0; i < users.length; i++) {
-            if (username === users[i].username) {
-                alert("Username already exist!!");
-                return false;
-            }else if (email === users[i].email) {
-                alert("Email already exist!!");
-                return false;
-            }
-            
+        let newUser     = {...user, id:1};
+        let users       = [newUser];
+        
+        localStorage.setItem('users', JSON.stringify(users));
+        alert(`Registration Successful, Please login to continue`);
+        //location.href = "index.html";
+        return false;
+    }else{
+        let usernameExist           = users.some((user) => username === user.username);
+        let emailExist              = users.some((user) => email === user.email);
+        
+        
+        if(usernameExist){
+            alert(`Username already exist`);
+            return false;
+        }else if(emailExist){
+            alert(`Email already exist`);
+            return false;
         }
-       alert('Registration Successful');
-       localStorage.setItem('users', JSON.stringify(users));
-       location.href = "index.html";
-       return;
+
+        let newId       = users.map( user => user.id );            
+        let id          = ( Math.max(...newId)+1 );
+        let newUserId   = {...user, id};
+        let newUser     = [...users, newUserId];
+        
+        localStorage.setItem('users', JSON.stringify(newUser));
+        alert(`Registration Successful, Please login to continue`);
+        return false;
+        
     }
-}
+
+    
+
+});

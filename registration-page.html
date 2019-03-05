@@ -4,38 +4,50 @@
 <head>
     <title>Sign Up Page</title>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/reg-page.css" />
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="css/reg-page.css" /> -->
+    <style>
+        .regPage{
+            display:block;
+        }
+    </style>
 </head>
 <body>
 
     <div class="container">
         <div class="regform">
-            <img src="images/image-1.png" class="ladychar" alt=""/>
+            <!-- <img src="images/image-1.png" class="ladychar" alt=""/> -->
         <form method="POST" class="regPage">
-            <img src="images/image-2.png" class="flower" alt=""/>
+            <!-- <img src="images/image-2.png" class="flower" alt=""/> -->
             <div class="title">
                 <p>New Account?</p>
             </div>
+            
+            <label>Fullname:</label>
             <div class= "form">
                 <input type="text" name="fullname" id="fullname" placeholder="Fullname" />
             </div>
             
+            <label>Email:</label>
             <div class= "form">
                 <input type="email" name="email" id="email" placeholder="Email" />
             </div>
-
-            <div class= "form">
-                <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Phone Number" />
+            
+            <label>Phone Number:</label>
+            <div class= "form">    
+                <input type="tel" name="phoneNumber" id="phoneNumber" placeholder="Phone Number" />
             </div>
             
+            <label>Username:</label>
             <div class= "form">
                <input type="text" name="username" id="username" placeholder="Username" /> 
             </div>
             
+            <label>Password:</label>
             <div class= "form">
                 <input type="password" name="password" id="password" placeholder="Password" />
             </div>
-
+            
+            <label>Confirm Password:</label>
             <div class= "form">
                 <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" />
             </div>
