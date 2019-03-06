@@ -27,8 +27,13 @@ validate = ( () => {
     alert("Insert type a number");
     return false;
   }
+  let currentUser = localStorage.getItem('currentUser');
+  currentUser     = JSON.parse(currentUser);
+
+  // console.log(currentUser.id);
 
   const parcel = {
+    userId: currentUser.id,
     fullname,
     parcelWeight,
     dateSent,
@@ -37,12 +42,15 @@ validate = ( () => {
   }
   
   let parcels = JSON.parse(localStorage.getItem("parcels"));
-   if(parcels === undefined || parcels === null){
+  
+  
+  if(parcels === undefined || parcels === null){
     let parcelArr = [parcel];
     alert('Your Order is Set');
     localStorage.setItem('parcels', JSON.stringify(parcelArr));
   } else{
     parcels.push(parcel);
+    console.log({parcels});
     alert('Your Order is Set');
     localStorage.setItem('parcels', JSON.stringify(parcels));
   }
