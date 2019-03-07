@@ -46,8 +46,8 @@ validateInput = ( () => {
         location.href = "index.html";
         return false;
     }else{
-        let usernameExist           = users.some((user) => username === user.username);
-        let emailExist              = users.some((user) => email === user.email);
+        const usernameExist           = users.some((user) => username === user.username);
+        const emailExist              = users.some((user) => email === user.email);
         
         
         if(usernameExist){

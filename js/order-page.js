@@ -17,6 +17,7 @@ validate = ( () => {
   let receiverAddress   = addressOfReceiver;
   receiverAddress       = receiverAddress.trim();
   
+  let status            = `Pending`;
   let input             = fullname && parcelWeight && dateSent && senderAddress && receiverAddress;
 
 
@@ -38,7 +39,9 @@ validate = ( () => {
     parcelWeight,
     dateSent,
     senderAddress,
-    receiverAddress 
+    receiverAddress,
+    dateReceived,
+    status
   }
   
   let parcels = JSON.parse(localStorage.getItem("parcels"));
