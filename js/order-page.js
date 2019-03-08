@@ -21,13 +21,13 @@ validate = ( () => {
   let input             = fullname && parcelWeight && dateSent && senderAddress && receiverAddress;
 
 
-  if(input === ""){
-    alert("fill in details");
-    return false;
-  }else if(!Number(parcelWeight)){
-    alert("Insert type a number");
-    return false;
-  }
+  // if(input === ""){
+  //   alert("fill in details");
+  //   return false;
+  // }else if(!Number(parcelWeight)){
+  //   alert("Insert type a number");
+  //   return false;
+  // }
   let currentUser = localStorage.getItem('currentUser');
   currentUser     = JSON.parse(currentUser);
 
@@ -47,21 +47,23 @@ validate = ( () => {
   
   
   if(parcels === undefined || parcels === null){
-    let newParcel = {...parcel, parcelId:2};
+    let newParcel = {...parcel, id:2};
     let parcelArr = [newParcel];
     
     alert('Your Order is Set');
     localStorage.setItem('parcels', JSON.stringify(parcelArr));
   
   } else{
-    // let newParcelId = parcels.map( parcel => parcel.parcelId);
+    //fix bug here
+    let newParcelId = parcels.map( parcel => parcel.id);
+    console.log({newParcelId});
     // let idParcel = (Math.max(...newParcelId)+2);
     // let parcelId = {...parcel, idParcel};
     // let newParcel = [...parcels,parcelId];
     
-    parcels.push(newParcel);
-    console.log(newParcel.parcelId);
-    alert('Your Order is Set');
-    localStorage.setItem('parcels', JSON.stringify(newParcel));
+    // parcels.push(newParcel);
+    // console.log(newParcel.parcelId);
+    // alert('Your Order is Set');
+    // localStorage.setItem('parcels', JSON.stringify(newParcel));
   }
 });

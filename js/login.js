@@ -6,11 +6,11 @@ login = ( () => {
     let password = document.getElementById("password").value;
     password     = password.trim();
 
-    if (username === "" || password === "") {
-        alert('Fill up fields');
-        location.reload();
-        return false;
-    }
+    // if (username === "" || password === "") {
+    //     alert('Fill up fields');
+    //     location.reload();
+    //     return false;
+    // }
 
     let users = JSON.parse(localStorage.getItem('users'));
     
