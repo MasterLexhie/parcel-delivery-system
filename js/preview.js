@@ -33,7 +33,7 @@ viewStoredData = (() => {
                     <option>Cancel</option>
                 </select>
             </td>
-          <td><input type="button" value="Edit" onclick="editParcel()"/></td>
+          <td><input type="button" value="Save" onclick="saveParcel()"/> <input type="button" value="Edit" onclick="editParcel()"/></td>
          </tr>
         `
     })
