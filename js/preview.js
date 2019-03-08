@@ -1,44 +1,55 @@
-function viewStoredData() {
+viewStoredData = (() => {
     // go into local storage
-    const parcels = JSON.parse(localStorage.getItem("parcels"));
-    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    const parcels       = JSON.parse(localStorage.getItem("parcels"));
+    const currentUser   = JSON.parse(localStorage.getItem("currentUser"));
 
-    let userParcels = parcels.filter((parcel) => currentUser.id === parcel.userId);
+    const header        = 
+    `
+        <tr>
+        <th>Id</th>
+        <th>Fullname</th>
+        <th>Weight of parcel</th>
+        <th>Date Sent</th>
+        <th>Address of Sender</th>
+        <th>Address of receiver</th>
+        <th>Status</th>
+        </tr>
+    `;
+
+    let userParcels = parcels.filter((parcel) => currentUser.id === parcel.userId).map(parcel => {
+        return `
+         <tr>
+          <td>${parcel.userId}</td>
+          <td>${parcel.fullname}</td>
+          <td>${parcel.parcelWeight}</td>
+          <td>${parcel.dateSent}</td>
+          <td>${parcel.senderAddress}</td>
+          <td>${parcel.receiverAddress}</td>
+          <td>
+                <select>
+                    <option>${parcel.status}</option>
+                    <option>Sent</option>
+                    <option>Delivered</option>
+                    <option>Cancel</option>
+                </select>
+            </td>
+          <td><input type="button" value="Edit" onclick="editParcel()"/></td>
+         </tr>
+        `
+    })
+
     
-    let table = document.getElementById('previewTable');
-    let row   = document.createElement("tr");
-    let cell1 = document.createElement("td");
-    let cell2 = document.createElement("td");
-    let cell3 = document.createElement("td");
-    let cell4 = document.createElement("td");
-    let cell5 = document.createElement("td");
-    let cell6 = document.createElement("td");
-    let cell7 = document.createElement("td");
-    let cell8 = document.createElement("td");
+    const table = `
+     <table>
+      ${header}
+      ${userParcels.join("")}
+     </table>
+    `;
 
-    let list = userParcels.map(parcel => {
-        cell1.innerHTML = parcel.userId;
-        cell2.innerHTML = parcel.fullname;
-        cell3.innerHTML = parcel.parcelWeight;
-        cell4.innerHTML = parcel.dateSent;
-        cell5.innerHTML = parcel.senderAddress;
-        cell6.innerHTML = parcel.receiverAddress;
-        cell7.innerHTML = parcel.dateReceived;
-        cell8.innerHTML = parcel.status;
+    document.getElementById('previewTable').innerHTML = table;
 
+    editParcel = (() => {
+
+        location.href = "edit-preview.html";
     });
-    console.log(list);
-    
-
-    table.appendChild(row);
-    row.appendChild(cell1);
-    row.appendChild(cell2);
-    row.appendChild(cell3);
-    row.appendChild(cell4);
-    row.appendChild(cell5);
-    row.appendChild(cell6);
-    row.appendChild(cell7);
-    row.appendChild(cell8);
-    
-
-}
+});

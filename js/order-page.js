@@ -31,7 +31,7 @@ validate = ( () => {
   let currentUser = localStorage.getItem('currentUser');
   currentUser     = JSON.parse(currentUser);
 
-  // console.log(currentUser.id);
+ 
 
   const parcel = {
     userId: currentUser.id,
@@ -40,7 +40,6 @@ validate = ( () => {
     dateSent,
     senderAddress,
     receiverAddress,
-    dateReceived,
     status
   }
   
@@ -48,13 +47,21 @@ validate = ( () => {
   
   
   if(parcels === undefined || parcels === null){
-    let parcelArr = [parcel];
+    let newParcel = {...parcel, parcelId:2};
+    let parcelArr = [newParcel];
+    
     alert('Your Order is Set');
     localStorage.setItem('parcels', JSON.stringify(parcelArr));
+  
   } else{
-    parcels.push(parcel);
-    console.log({parcels});
+    // let newParcelId = parcels.map( parcel => parcel.parcelId);
+    // let idParcel = (Math.max(...newParcelId)+2);
+    // let parcelId = {...parcel, idParcel};
+    // let newParcel = [...parcels,parcelId];
+    
+    parcels.push(newParcel);
+    console.log(newParcel.parcelId);
     alert('Your Order is Set');
-    localStorage.setItem('parcels', JSON.stringify(parcels));
+    localStorage.setItem('parcels', JSON.stringify(newParcel));
   }
 });

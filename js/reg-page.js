@@ -65,6 +65,7 @@ validateInput = ( () => {
         
         localStorage.setItem('users', JSON.stringify(newUser));
         alert(`Registration Successful, Please login to continue`);
+        location.href = "index.html";
         return false;
         
     }
