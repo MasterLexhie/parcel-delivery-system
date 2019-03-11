@@ -1,8 +1,8 @@
-validate = ( () => {
+createParcel = ( () => {
   let fullname          = document.getElementById('fullname').value;
   fullname              = fullname.trim();
   
-  let parcelWeight      = document.getElementById('parcelWeight').value;
+  let parcelWeight      = document.getElementById('parcelWeight').value + ' kg';
   parcelWeight          = parcelWeight.trim();
   
   let dateSent          = document.getElementById('dateSent').value;
@@ -16,9 +16,12 @@ validate = ( () => {
   
   let receiverAddress   = addressOfReceiver;
   receiverAddress       = receiverAddress.trim();
+
+  let parcelDescription = document.querySelector('#description').value;
+  parcelDescription     = parcelDescription.trim();
   
   let status            = `Pending`;
-  let input             = fullname && parcelWeight && dateSent && senderAddress && receiverAddress;
+  let input             = fullname && parcelWeight && dateSent && senderAddress && receiverAddress && parcelDescription;
 
 
   if(input === ""){
@@ -27,7 +30,11 @@ validate = ( () => {
   }else if(!Number(parcelWeight)){
     alert("Insert type a number");
     return false;
+  }else if(parcelDescription === undefined || parcelDescription === ''){
+    alert(`Please set description of parcel`);
+    return false;
   }
+
   let currentUser = localStorage.getItem('currentUser');
   currentUser     = JSON.parse(currentUser);
 
@@ -40,6 +47,7 @@ validate = ( () => {
     dateSent,
     senderAddress,
     receiverAddress,
+    parcelDescription,
     status
   }
   
@@ -52,18 +60,19 @@ validate = ( () => {
     
     alert('Your Order is Set');
     localStorage.setItem('parcels', JSON.stringify(parcelArr));
+    location.href ='preview.html';
   
   } else{
-    //fix bug here
     let newParcelId = parcels.map( parcel => parcel.id);
-    // console.log({newParcelId});
 
     let id = (Math.max(...newParcelId)+1);
+    
     parcel = {...parcel, id};
+    
     parcels  = [...parcels,parcel];
 
-    // console.log(newParcel);
-    // alert('Your Order is Set');
+    alert('Your Order is Set');
     localStorage.setItem('parcels', JSON.stringify(parcels));
+    location.href ='preview.html';
   }
 });

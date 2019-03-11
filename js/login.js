@@ -27,7 +27,7 @@ login = ( () => {
         else{
             localStorage.setItem('currentUser', JSON.stringify(userExist));
             alert(`Welcome ${username}`);
-            location.href = "order-page.html";
+            location.href = "preview.html";
             return false;
         }
     }

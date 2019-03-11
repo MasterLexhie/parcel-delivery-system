@@ -43,7 +43,7 @@ validateInput = ( () => {
         
         localStorage.setItem('users', JSON.stringify(users));
         alert(`Registration Successful, Please login to continue`);
-        location.href = "index.html";
+        location.href = "login.html";
         return false;
     }else{
         const usernameExist   = users.some((user) => username === user.username);
@@ -65,7 +65,7 @@ validateInput = ( () => {
         
         localStorage.setItem('users', JSON.stringify(newUser));
         alert(`Registration Successful, Please login to continue`);
-        location.href = "index.html";
+        location.href = "login.html";
         return false;
         
     }
