@@ -1,8 +1,8 @@
 createParcel = ( () => {
-  let fullname          = document.getElementById('fullname').value;
-  fullname              = fullname.trim();
-  
-  let parcelWeight      = document.getElementById('parcelWeight').value + ' kg';
+  let parcelName        = document.getElementById('parcelName').value;
+  parcelName            = parcelName.trim();
+
+  let parcelWeight      = document.getElementById('parcelWeight').value;
   parcelWeight          = parcelWeight.trim();
   
   let dateSent          = document.getElementById('dateSent').value;
@@ -21,14 +21,14 @@ createParcel = ( () => {
   parcelDescription     = parcelDescription.trim();
   
   let status            = `Pending`;
-  let input             = fullname && parcelWeight && dateSent && senderAddress && receiverAddress && parcelDescription;
+  let input             = parcelName && parcelWeight && dateSent && senderAddress && receiverAddress && parcelDescription;
 
 
   if(input === ""){
     alert("fill in details");
     return false;
   }else if(!Number(parcelWeight)){
-    alert("Insert type a number");
+    alert("Insert a number");
     return false;
   }else if(parcelDescription === undefined || parcelDescription === ''){
     alert(`Please set description of parcel`);
@@ -42,7 +42,7 @@ createParcel = ( () => {
 
   let parcel = {
     userId: currentUser.id,
-    fullname,
+    parcelName,
     parcelWeight,
     dateSent,
     senderAddress,
