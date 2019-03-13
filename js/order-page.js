@@ -57,10 +57,11 @@ createParcel = ( () => {
   if(parcels === undefined || parcels === null){
     let newParcel = {...parcel, id:1};
     let parcelArr = [newParcel];
-    
+
     alert('Your Order is Set');
     localStorage.setItem('parcels', JSON.stringify(parcelArr));
-    location.href ='preview.html';
+
+    self.location = 'preview.html';
   
   } else{
     let newParcelId = parcels.map( parcel => parcel.id);
@@ -73,6 +74,7 @@ createParcel = ( () => {
 
     alert('Your Order is Set');
     localStorage.setItem('parcels', JSON.stringify(parcels));
-    location.href ='preview.html';
+
+    self.location = 'preview.html';
   }
 });
